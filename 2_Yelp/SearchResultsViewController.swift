@@ -22,6 +22,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.registerNib(UINib(nibName: "BusinessCell", bundle: nil), forCellReuseIdentifier: "BusinessCell")
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
@@ -31,6 +33,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
                 let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
             
                 self.businesses = Business.businessesFromDictionaries(responseBusinesses)
+            
+                self.tableView.reloadData()
         }) {
             (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
@@ -42,7 +46,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("BusinessCell") as BusinessCell
+        cell.setBusiness(self.businesses[indexPath.row])
+        return cell
     }
 }
 

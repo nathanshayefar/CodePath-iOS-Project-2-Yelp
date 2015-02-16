@@ -7,13 +7,13 @@
 //
 
 struct Business {
-    let imageUrl: NSURL
+    let imageUrl: NSURL?
     let name: String
-    let ratingImageUrl: NSURL
+    let ratingImageUrl: NSURL?
     let numberOfReviews: Int
     let address: String
     let categories: [String]
-    let distance: Double?
+    let distance: Double
     
     static func fromDictionary(dict: NSDictionary) -> Business {
         let name = dict["name"]! as String
@@ -29,10 +29,10 @@ struct Business {
         }
         
         let imageUrlString = dict["image_url"]! as String
-        let imageUrl = NSURL(string: imageUrlString)!
+        let imageUrl = NSURL(string: imageUrlString)
         
-        let ratingImageUrlString = dict["rating_img_url"]! as String
-        let ratingImageUrl = NSURL(string: ratingImageUrlString)!
+        let ratingImageUrlString = dict["rating_img_url_large"]! as String
+        let ratingImageUrl = NSURL(string: ratingImageUrlString)
         
         let numberOfReviews = dict["review_count"]! as Int
         

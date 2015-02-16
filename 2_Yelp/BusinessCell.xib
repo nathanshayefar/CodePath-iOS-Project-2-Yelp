@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="94" id="KGk-i7-Jjw" customClass="BusinessCell" customModule="__Yelp" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="94" id="KGk-i7-Jjw" customClass="BusinessCell" customModule="__Yelp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="358" height="94"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -71,6 +71,7 @@
                     <constraint firstItem="Z09-ki-Dg0" firstAttribute="leading" secondItem="WNM-86-NwE" secondAttribute="trailing" constant="8" id="J41-dC-RBS"/>
                     <constraint firstItem="WNM-86-NwE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Jqj-Tq-c1C"/>
                     <constraint firstItem="8Pd-6p-zcD" firstAttribute="centerY" secondItem="5Ph-Iy-W7b" secondAttribute="centerY" id="O4M-CC-GGR"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Z09-ki-Dg0" secondAttribute="bottom" constant="8" id="Pwx-FL-aW5"/>
                     <constraint firstItem="Z09-ki-Dg0" firstAttribute="top" secondItem="1wT-eb-lGY" secondAttribute="bottom" constant="2" id="QQW-56-zKp"/>
                     <constraint firstItem="1wT-eb-lGY" firstAttribute="leading" secondItem="WNM-86-NwE" secondAttribute="trailing" constant="8" id="QS8-pn-UAn"/>
                     <constraint firstAttribute="trailing" secondItem="Krz-kX-O1Y" secondAttribute="trailing" constant="8" id="RUf-xP-12O"/>
@@ -86,6 +87,7 @@
                     <constraint firstItem="5Ph-Iy-W7b" firstAttribute="leading" secondItem="8Pd-6p-zcD" secondAttribute="trailing" constant="8" id="sZk-1X-vAX"/>
                     <constraint firstAttribute="trailing" secondItem="TZf-WF-jBB" secondAttribute="trailing" constant="8" id="two-s9-YhJ"/>
                     <constraint firstItem="Xc4-3C-ikn" firstAttribute="leading" secondItem="WNM-86-NwE" secondAttribute="trailing" constant="8" id="wWp-F4-7Lx"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WNM-86-NwE" secondAttribute="bottom" constant="8" id="zBi-Rn-4gT"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -95,6 +97,16 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="1wT-eb-lGY" id="pQd-G6-uyl"/>
+                <outlet property="categoryLabel" destination="Z09-ki-Dg0" id="4f3-L9-Wrh"/>
+                <outlet property="distanceLabel" destination="TZf-WF-jBB" id="Fqc-g4-Zsz"/>
+                <outlet property="nameLabel" destination="Xc4-3C-ikn" id="5bc-ig-LG8"/>
+                <outlet property="priceLabel" destination="Krz-kX-O1Y" id="F7w-cQ-xdK"/>
+                <outlet property="ratingImageView" destination="8Pd-6p-zcD" id="TiG-dW-gju"/>
+                <outlet property="ratingLabel" destination="5Ph-Iy-W7b" id="xFi-tr-KrR"/>
+                <outlet property="thumbnailImageView" destination="WNM-86-NwE" id="lnq-yX-ihZ"/>
+            </connections>
             <point key="canvasLocation" x="359" y="415"/>
         </tableViewCell>
     </objects>

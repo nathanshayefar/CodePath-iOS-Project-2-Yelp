@@ -9,7 +9,15 @@
 import UIKit
 
 class BusinessCell: UITableViewCell {
-
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var ratingImageView: UIImageView!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +29,12 @@ class BusinessCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setBusiness(business: Business) {
+        self.thumbnailImageView.setImageWithURL(business.imageUrl)
+        self.nameLabel.text = business.name
+        self.ratingImageView.setImageWithURL(business.ratingImageUrl)
+        self.ratingLabel.text = "\(business.numberOfReviews) Reviews"
+        self.addressLabel.text = business.address
+        self.distanceLabel.text = String(format: "%.2f", business.distance)
+    }
 }
