@@ -8,6 +8,9 @@
 
 // Source: Codepath Yelp starter project (https://github.com/codepath/ios_yelp_swift)
 class YelpClient: BDBOAuth1RequestOperationManager {
+    let latitude = "37.774866"
+    let longitude = "-122.394556"
+    
     var accessToken: String!
     var accessSecret: String!
     
@@ -27,7 +30,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     
     func searchWithTerm(term: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
-        var parameters = ["term": term, "location": "San Francisco"]
+        var parameters = ["term": term, "ll": "\(latitude),\(longitude)"]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
 }

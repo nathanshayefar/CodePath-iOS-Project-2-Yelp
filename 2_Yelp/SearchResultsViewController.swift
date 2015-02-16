@@ -20,6 +20,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Yelp"
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -31,6 +33,8 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                 let responseDictionary = response as NSDictionary
                 let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
+            
+                println(responseBusinesses)
             
                 self.businesses = Business.businessesFromDictionaries(responseBusinesses)
             

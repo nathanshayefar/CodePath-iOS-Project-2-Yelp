@@ -12,7 +12,7 @@ struct Business {
     let ratingImageUrl: NSURL?
     let numberOfReviews: Int
     let address: String
-    let categories: [String]
+    let categories: String
     let distance: Double
     
     static func fromDictionary(dict: NSDictionary) -> Business {
@@ -27,6 +27,7 @@ struct Business {
                 categories.append(categoryString.capitalizedString)
             }
         }
+        let categoryString = ""
         
         let imageUrlString = dict["image_url"]! as String
         let imageUrl = NSURL(string: imageUrlString)
@@ -45,22 +46,15 @@ struct Business {
         if (!streetAddresses.isEmpty) {
             address += "\(streetAddresses[0]), "
         }
-        if (!neighborhoods.isEmpty) {
+        if (!neighborhoods.isEmpty) {   
             address += neighborhoods[0]
         }
         
-//        var coordinates: NSDictionary = {
-//            latitude = 0.0,
-//            longitude = 0.0
-//        }
-//        if let coordinate = locationDict["coordinate"] {
-//            
-//        }
+        let distanceMeters = dict["distance"] as Double
+        let distanceMiles = metersToMiles(distanceMeters)
         
         // May be necessary for storing business ID
 //        NSString *encodedId = [businessId stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        let distance = 0.0
         
         return Business(
             imageUrl: imageUrl,
@@ -68,8 +62,8 @@ struct Business {
             ratingImageUrl: ratingImageUrl,
             numberOfReviews: numberOfReviews,
             address: address,
-            categories: categories,
-            distance: distance
+            categories: ", ".join(categories),
+            distance: distanceMiles
         )
     }
 
@@ -81,5 +75,9 @@ struct Business {
         }
 
         return businesses
+    }
+    
+    private static func metersToMiles(meters: Double) -> Double {
+        return meters * 0.000621371
     }
 }
