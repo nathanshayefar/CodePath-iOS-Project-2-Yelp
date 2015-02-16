@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var client: YelpClient!
+    var businesses: [Business] = []
     
     let yelpConsumerKey = "qFUBisCevpAq0mCYi_jb-g"
     let yelpConsumerSecret = "cpdvTTFI3Psrzc_hHYctqP7Rmf8"
@@ -21,19 +22,14 @@ class ViewController: UIViewController {
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!,
-                response: AnyObject!) -> Void in
-                println(response)
+        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                let responseDictionary = response as NSDictionary
+                let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
+            
+                self.businesses = Business.businessesFromDictionaries(responseBusinesses)
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println (error
+                println (error)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-
-
 }
 

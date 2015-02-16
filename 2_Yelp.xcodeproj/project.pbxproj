@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		78EC5DBC3B7EBD95017FBAA6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 533BF49645791CD93BA31D15 /* libPods.a */; };
 		8AC194A11A89BCC200CCC036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC194A01A89BCC200CCC036 /* AppDelegate.swift */; };
-		8AC194A31A89BCC200CCC036 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC194A21A89BCC200CCC036 /* ViewController.swift */; };
+		8AC194A31A89BCC200CCC036 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC194A21A89BCC200CCC036 /* SearchResultsViewController.swift */; };
 		8AC194A61A89BCC200CCC036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC194A41A89BCC200CCC036 /* Main.storyboard */; };
 		8AC194A81A89BCC200CCC036 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AC194A71A89BCC200CCC036 /* Images.xcassets */; };
 		8AC194AB1A89BCC200CCC036 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC194A91A89BCC200CCC036 /* LaunchScreen.xib */; };
@@ -33,7 +33,7 @@
 		8AC1949B1A89BCC200CCC036 /* 2_Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2_Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC1949F1A89BCC200CCC036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AC194A01A89BCC200CCC036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8AC194A21A89BCC200CCC036 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8AC194A21A89BCC200CCC036 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		8AC194A51A89BCC200CCC036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AC194A71A89BCC200CCC036 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8AC194AA1A89BCC200CCC036 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		8AF4E1D51A92570700DA66CF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8AC194A21A89BCC200CCC036 /* ViewController.swift */,
+				8AC194A21A89BCC200CCC036 /* SearchResultsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 			files = (
 				8AF4E1DA1A9257BD00DA66CF /* YelpClient.swift in Sources */,
 				8AF4E1D71A92578100DA66CF /* Business.swift in Sources */,
-				8AC194A31A89BCC200CCC036 /* ViewController.swift in Sources */,
+				8AC194A31A89BCC200CCC036 /* SearchResultsViewController.swift in Sources */,
 				8AC194A11A89BCC200CCC036 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
