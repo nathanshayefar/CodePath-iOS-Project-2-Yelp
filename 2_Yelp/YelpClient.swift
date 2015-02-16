@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Nathan Shayefar. All rights reserved.
 //
 
-import UIKit
-
 // Source: Codepath Yelp starter project (https://github.com/codepath/ios_yelp_swift)
 class YelpClient: BDBOAuth1RequestOperationManager {
     var accessToken: String!

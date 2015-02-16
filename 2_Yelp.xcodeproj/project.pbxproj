@@ -105,7 +105,6 @@
 				8AC194A71A89BCC200CCC036 /* Images.xcassets */,
 				8AC194A91A89BCC200CCC036 /* LaunchScreen.xib */,
 				8AC1949E1A89BCC200CCC036 /* Supporting Files */,
-				8AF4E1D11A9254C100DA66CF /* 2_Yelp-Bridging-Header.h */,
 			);
 			path = 2_Yelp;
 			sourceTree = "<group>";
@@ -113,6 +112,7 @@
 		8AC1949E1A89BCC200CCC036 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8AF4E1D11A9254C100DA66CF /* 2_Yelp-Bridging-Header.h */,
 				8AC1949F1A89BCC200CCC036 /* Info.plist */,
 			);
 			name = "Supporting Files";

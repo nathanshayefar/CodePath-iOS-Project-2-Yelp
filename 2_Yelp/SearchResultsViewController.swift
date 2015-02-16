@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Nathan Shayefar. All rights reserved.
 //
 
-import UIKit
-
 class ViewController: UIViewController {
     var client: YelpClient!
     var businesses: [Business] = []
@@ -22,13 +20,15 @@ class ViewController: UIViewController {
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        client.searchWithTerm("Thai", success: {
+            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                 let responseDictionary = response as NSDictionary
                 let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
             
                 self.businesses = Business.businessesFromDictionaries(responseBusinesses)
-            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println (error)
+        }) {
+            (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
         }
     }
 }
