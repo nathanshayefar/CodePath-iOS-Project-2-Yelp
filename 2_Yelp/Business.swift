@@ -19,15 +19,11 @@ struct Business {
         let name = dict["name"]! as String
         
         var categories: [String] = []
-        // Categories are returned as a list of lists
-        let categoriesList = dict["categories"]! as [[String]]
-        // TODO: de-dupe
-        if !categoriesList.isEmpty {
-            for categoryString in categoriesList[0] {
-                categories.append(categoryString.capitalizedString)
-            }
+        let categoryPairs = dict["categories"]! as [[String]]
+        for categoryPair in categoryPairs {
+            categories.append(categoryPair[0])
         }
-        let categoryString = ""
+        let categoryString = ", ".join(categories)
         
         let imageUrlString = dict["image_url"]! as String
         let imageUrl = NSURL(string: imageUrlString)
@@ -46,7 +42,7 @@ struct Business {
         if (!streetAddresses.isEmpty) {
             address += "\(streetAddresses[0]), "
         }
-        if (!neighborhoods.isEmpty) {   
+        if (!neighborhoods.isEmpty) {
             address += neighborhoods[0]
         }
         
@@ -62,7 +58,7 @@ struct Business {
             ratingImageUrl: ratingImageUrl,
             numberOfReviews: numberOfReviews,
             address: address,
-            categories: ", ".join(categories),
+            categories: categoryString,
             distance: distanceMiles
         )
     }
