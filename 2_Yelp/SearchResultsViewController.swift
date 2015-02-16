@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Nathan Shayefar. All rights reserved.
 //
 
-class ViewController: UIViewController {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+    
     var client: YelpClient!
     var businesses: [Business] = []
     
@@ -17,6 +19,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         
         client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
@@ -30,6 +35,14 @@ class ViewController: UIViewController {
             (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
         }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return businesses.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }
 
