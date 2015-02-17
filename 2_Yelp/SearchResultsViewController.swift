@@ -30,22 +30,29 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.registerNib(UINib(nibName: "BusinessCell", bundle: nil), forCellReuseIdentifier: "BusinessCell")
         
-        client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
+        self.client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
         
-        client.searchWithTerm("Thai", success: {
-            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                let responseDictionary = response as NSDictionary
-                let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
-            
-                println(responseBusinesses)
-            
-                self.businesses = Business.businessesFromDictionaries(responseBusinesses)
-            
-                self.tableView.reloadData()
-        }) {
-            (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println(error)
-        }
+        self.makeNetworkRequest()
+        
+//        self.client.searchWithTerm("Thai", success: {
+//            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+//                let responseDictionary = response as NSDictionary
+//                let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
+//            
+//                println(responseBusinesses)
+//            
+//                self.businesses = Business.businessesFromDictionaries(responseBusinesses)
+//            
+//                self.tableView.reloadData()
+//        }) {
+//            (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+//                println(error)
+//        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var filtersViewController = segue.destinationViewController as FiltersViewController
+        filtersViewController.delegate = self
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,14 +67,33 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary) {
         // fire a new network event
+        self.makeNetworkRequest()
+    }
+    
+    private func makeNetworkRequest() {
+        client.searchWithTerm("Thai", success: {
+            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            let responseDictionary = response as NSDictionary
+            let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
+            
+            println(responseBusinesses)
+            
+            self.businesses = Business.businessesFromDictionaries(responseBusinesses)
+            
+            self.tableView.reloadData()
+            }) {
+                (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
     }
     
     func onFilterButton() {
-        let filtersViewController = FiltersViewController()
-        filtersViewController.delegate = self
-        let filtersNavigationController = UINavigationController(rootViewController: filtersViewController)
-        
-        self.presentViewController(filtersNavigationController, animated: true, completion: nil)
+        performSegueWithIdentifier("filtersViewSegue", sender: self)
+//        let filtersViewController = FiltersViewController()
+//        filtersViewController.delegate = self
+//        let filtersNavigationController = UINavigationController(rootViewController: filtersViewController)
+//        
+//        self.presentViewController(filtersNavigationController, animated: true, completion: nil)
     }
 }
 
