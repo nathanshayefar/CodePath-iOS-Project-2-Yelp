@@ -17,18 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="h7x-L6-bhO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="h7x-L6-bhO">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="h7x-L6-bhO" secondAttribute="bottom" id="Okc-05-5X1"/>
+                            <constraint firstAttribute="trailing" secondItem="h7x-L6-bhO" secondAttribute="trailing" id="P7K-Oa-RY9"/>
                             <constraint firstItem="h7x-L6-bhO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="XaN-Vm-4zk"/>
+                            <constraint firstItem="h7x-L6-bhO" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dYt-w9-40H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="h7x-L6-bhO" secondAttribute="trailing" id="lX2-MI-chp"/>
+                            <constraint firstItem="h7x-L6-bhO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pNc-a9-NnK"/>
                             <constraint firstAttribute="bottomMargin" secondItem="h7x-L6-bhO" secondAttribute="bottom" id="w3X-9f-JxN"/>
                             <constraint firstItem="h7x-L6-bhO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wXw-Ai-GRQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XaN-Vm-4zk"/>
+                                <exclude reference="lX2-MI-chp"/>
+                                <exclude reference="w3X-9f-JxN"/>
+                                <exclude reference="wXw-Ai-GRQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="qxt-h8-GGU"/>
                     <connections>
