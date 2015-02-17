@@ -50,11 +50,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func onCancelButton() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func onSearchButton() {
         self.delegate!.didChangeFilters(self, filters: Filter.getFilters())
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }
