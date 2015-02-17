@@ -33,4 +33,4 @@ Time spent: `14 hours`
 
 ![Video Walkthrough](anim_yelp.gif)
 
-
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
