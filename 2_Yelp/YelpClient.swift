@@ -32,8 +32,12 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     func searchWithFilter(filter: NSDictionary, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
         var parameters: [String : String] = [:]
         
-        parameters["term"] = "Thai"
         parameters["ll"] = "\(latitude),\(longitude)"
+        
+        if let term = filter["term"] as? String {
+            parameters["term"] = term.isEmpty ? "Restaurant" : term
+        }
+        
         
         if let category_filter = filter["categories"] as? String {
             if !category_filter.isEmpty {

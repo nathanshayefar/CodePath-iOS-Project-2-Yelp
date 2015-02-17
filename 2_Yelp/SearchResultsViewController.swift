@@ -6,12 +6,13 @@
 //  Copyright (c) 2015 Nathan Shayefar. All rights reserved.
 //
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FiltersViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var client: YelpClient!
+    var searchBar = UISearchBar()
     var businesses: [Business] = []
-    var filters: NSDictionary = [:]
+    var filters: [String : NSObject] = [:]
     
     let yelpConsumerKey = "qFUBisCevpAq0mCYi_jb-g"
     let yelpConsumerSecret = "cpdvTTFI3Psrzc_hHYctqP7Rmf8"
@@ -24,6 +25,9 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         // Navigation Controller
         self.title = "Yelp"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "onFilterButton")
+        
+        self.searchBar.delegate = self
+        self.navigationItem.titleView = self.searchBar
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -50,8 +54,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         return cell
     }
     
-    func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary) {
-        println(filters)
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.filters["term"] = searchBar.text
+        self.makeNetworkRequest()
+    }
+    
+    func didChangeFilters(filtersViewController: FiltersViewController, filters: [String : NSObject]) {
         self.filters = filters
         self.makeNetworkRequest()
     }
@@ -60,6 +69,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         client.searchWithFilter(self.filters, success: {
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseDictionary = response as NSDictionary
+            println(responseDictionary)
             let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
             
             self.businesses = Business.businessesFromDictionaries(responseBusinesses)

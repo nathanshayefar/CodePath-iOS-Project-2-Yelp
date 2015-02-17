@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FiltersViewControllerDelegate : class {
-    func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary)
+    func didChangeFilters(filtersViewController: FiltersViewController, filters: [String : NSObject])
 }
 
 enum FilterSection : Int, Printable {
