@@ -12,38 +12,38 @@ protocol FiltersViewControllerDelegate : class {
     func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary)
 }
 
+enum FilterSection : Int, Printable {
+    case Categories, Sort, Distance, Deals
+    
+    var description : String {
+        get {
+            switch self {
+            case .Categories:
+                return "Categories"
+            case .Sort:
+                return "Sort by"
+            case .Distance:
+                return "Distance"
+            case .Deals:
+                return "Deals"
+            }
+        }
+    }
+    
+    // A little hacky; I still need to dig deeper into Swift enums
+    static let values = [Categories, Sort, Distance, Deals]
+    static let count = values.count
+    
+    // Not fault tolerant
+    static func fromValue(index: Int) -> FilterSection {
+        return values[index]
+    }
+}
+
 class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     weak var delegate: FiltersViewControllerDelegate? = nil
-    
-    enum FilterSection : Int, Printable {
-        case Categories, Sort, Distance, Deals
-        
-        var description : String {
-            get {
-                switch self {
-                case .Categories:
-                    return "Categories"
-                case .Sort:
-                    return "Sort by"
-                case .Distance:
-                    return "Distance"
-                case .Deals:
-                    return "Deals"
-                }
-            }
-        }
-        
-        // A little hacky; I still need to dig deeper into Swift enums
-        static let values = [Categories, Sort, Distance, Deals]
-        static let count = values.count
-        
-        // Not fault tolerant
-        static func fromValue(index: Int) -> FilterSection {
-            return values[index]
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,18 +78,42 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("SwitchCell") as SwitchCell
+        switch indexPath.section {
+        case FilterSection.Categories.rawValue:
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("SwitchCell") as SwitchCell
+                
+            cell.delegate = self
+            cell.titleLabel.text = Filter.getName(indexPath)
+            cell.setSwitchValue(Filter.isEnabledCategory(indexPath))
+                
+            return cell
+            
+        case FilterSection.Sort.rawValue:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Sort by"
+            return cell
         
-        cell.delegate = self
-        cell.titleLabel.text = Filter.getName(indexPath.row)
-        cell.setSwitchValue(Filter.isEnabled(indexPath.row))
+        case FilterSection.Distance.rawValue:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Distance"
+            return cell
         
-        return cell
+        case FilterSection.Deals.rawValue:
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("SwitchCell") as SwitchCell
+            
+            cell.delegate = self
+            cell.titleLabel.text = "Offering a Deal"
+            cell.setSwitchValue(Filter.dealsEnabled())
+            return cell
+        
+        default:
+            return UITableViewCell()
+        }
     }
     
     func didUpdateValue(switchCell: SwitchCell, value: Bool) {
         let indexPath = self.tableView.indexPathForCell(switchCell)!
-        Filter.enable(indexPath.row, enable: value)
+        Filter.enableCategory(indexPath, enable: value)
     }
     
     func onCancelButton() {

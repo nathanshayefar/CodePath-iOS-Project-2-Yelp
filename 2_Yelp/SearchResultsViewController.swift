@@ -31,23 +31,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.registerNib(UINib(nibName: "BusinessCell", bundle: nil), forCellReuseIdentifier: "BusinessCell")
         
         self.client = YelpClient(consumerKey: yelpConsumerKey, consumerSecret: yelpConsumerSecret, accessToken: yelpToken, accessSecret: yelpTokenSecret)
-        
         self.makeNetworkRequest()
-        
-//        self.client.searchWithTerm("Thai", success: {
-//            (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-//                let responseDictionary = response as NSDictionary
-//                let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
-//            
-//                println(responseBusinesses)
-//            
-//                self.businesses = Business.businessesFromDictionaries(responseBusinesses)
-//            
-//                self.tableView.reloadData()
-//        }) {
-//            (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-//                println(error)
-//        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
