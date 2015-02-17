@@ -15,14 +15,14 @@ protocol FiltersViewControllerDelegate : class {
 class FiltersViewController: UIViewController {
     weak var delegate: FiltersViewControllerDelegate?
     var filters = NSDictionary()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "onCancelButton")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Apply", style: .Plain, target: self, action: "onApplyButton")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

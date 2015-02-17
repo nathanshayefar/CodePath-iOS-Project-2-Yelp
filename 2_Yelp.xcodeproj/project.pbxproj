@@ -16,7 +16,8 @@
 		8AC194B71A89BCC200CCC036 /* __YelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC194B61A89BCC200CCC036 /* __YelpTests.swift */; };
 		8AEDD6B81A929C29005823C5 /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD6B61A929C29005823C5 /* BusinessCell.swift */; };
 		8AEDD6B91A929C29005823C5 /* BusinessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEDD6B71A929C29005823C5 /* BusinessCell.xib */; };
-		8AEDD6BB1A92BCAE005823C5 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD6BA1A92BCAE005823C5 /* FiltersViewController.swift */; };
+		8AEDD6C21A92CD22005823C5 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEDD6C01A92CD22005823C5 /* FiltersViewController.swift */; };
+		8AEDD6C31A92CD22005823C5 /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AEDD6C11A92CD22005823C5 /* FiltersViewController.xib */; };
 		8AF4E1D71A92578100DA66CF /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4E1D61A92578100DA66CF /* Business.swift */; };
 		8AF4E1DA1A9257BD00DA66CF /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4E1D91A9257BD00DA66CF /* YelpClient.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +46,8 @@
 		8AC194B61A89BCC200CCC036 /* __YelpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __YelpTests.swift; sourceTree = "<group>"; };
 		8AEDD6B61A929C29005823C5 /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		8AEDD6B71A929C29005823C5 /* BusinessCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessCell.xib; sourceTree = "<group>"; };
-		8AEDD6BA1A92BCAE005823C5 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		8AEDD6C01A92CD22005823C5 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		8AEDD6C11A92CD22005823C5 /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
 		8AF4E1D11A9254C100DA66CF /* 2_Yelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "2_Yelp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8AF4E1D61A92578100DA66CF /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		8AF4E1D91A9257BD00DA66CF /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
@@ -163,7 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				8AC194A21A89BCC200CCC036 /* SearchResultsViewController.swift */,
-				8AEDD6BA1A92BCAE005823C5 /* FiltersViewController.swift */,
+				8AEDD6C01A92CD22005823C5 /* FiltersViewController.swift */,
+				8AEDD6C11A92CD22005823C5 /* FiltersViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			files = (
 				8AC194A61A89BCC200CCC036 /* Main.storyboard in Resources */,
 				8AEDD6B91A929C29005823C5 /* BusinessCell.xib in Resources */,
+				8AEDD6C31A92CD22005823C5 /* FiltersViewController.xib in Resources */,
 				8AC194AB1A89BCC200CCC036 /* LaunchScreen.xib in Resources */,
 				8AC194A81A89BCC200CCC036 /* Images.xcassets in Resources */,
 			);
@@ -321,11 +325,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AEDD6BB1A92BCAE005823C5 /* FiltersViewController.swift in Sources */,
 				8AEDD6B81A929C29005823C5 /* BusinessCell.swift in Sources */,
 				8AF4E1DA1A9257BD00DA66CF /* YelpClient.swift in Sources */,
 				8AF4E1D71A92578100DA66CF /* Business.swift in Sources */,
 				8AC194A31A89BCC200CCC036 /* SearchResultsViewController.swift in Sources */,
+				8AEDD6C21A92CD22005823C5 /* FiltersViewController.swift in Sources */,
 				8AC194A11A89BCC200CCC036 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

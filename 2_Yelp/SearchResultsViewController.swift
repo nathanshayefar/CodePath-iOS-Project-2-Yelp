@@ -60,7 +60,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary) {
         // fire a new network event
-        println("LOGGGG")
     }
     
     func onFilterButton() {
