@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		78EC5DBC3B7EBD95017FBAA6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 533BF49645791CD93BA31D15 /* libPods.a */; };
+		8A4DF4861A93202D00530CBB /* SegmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DF4841A93202D00530CBB /* SegmentCell.swift */; };
+		8A4DF4871A93202D00530CBB /* SegmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4DF4851A93202D00530CBB /* SegmentCell.xib */; };
 		8AC194A11A89BCC200CCC036 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC194A01A89BCC200CCC036 /* AppDelegate.swift */; };
 		8AC194A31A89BCC200CCC036 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC194A21A89BCC200CCC036 /* SearchResultsViewController.swift */; };
 		8AC194A61A89BCC200CCC036 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC194A41A89BCC200CCC036 /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		533BF49645791CD93BA31D15 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4DF4841A93202D00530CBB /* SegmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentCell.swift; sourceTree = "<group>"; };
+		8A4DF4851A93202D00530CBB /* SegmentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentCell.xib; sourceTree = "<group>"; };
 		8AC1949B1A89BCC200CCC036 /* 2_Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2_Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC1949F1A89BCC200CCC036 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AC194A01A89BCC200CCC036 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				8AEDD6B71A929C29005823C5 /* BusinessCell.xib */,
 				8AEDD6C41A92CEE1005823C5 /* SwitchCell.swift */,
 				8AEDD6C51A92CEE1005823C5 /* SwitchCell.xib */,
+				8A4DF4841A93202D00530CBB /* SegmentCell.swift */,
+				8A4DF4851A93202D00530CBB /* SegmentCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AC194A61A89BCC200CCC036 /* Main.storyboard in Resources */,
+				8A4DF4871A93202D00530CBB /* SegmentCell.xib in Resources */,
 				8AEDD6B91A929C29005823C5 /* BusinessCell.xib in Resources */,
 				8AC194AB1A89BCC200CCC036 /* LaunchScreen.xib in Resources */,
 				8AC194A81A89BCC200CCC036 /* Images.xcassets in Resources */,
@@ -337,6 +344,7 @@
 				8AEDD6C61A92CEE1005823C5 /* SwitchCell.swift in Sources */,
 				8AC194A31A89BCC200CCC036 /* SearchResultsViewController.swift in Sources */,
 				8AE027AE1A92F45800291F2A /* Filter.swift in Sources */,
+				8A4DF4861A93202D00530CBB /* SegmentCell.swift in Sources */,
 				8AEDD6C21A92CD22005823C5 /* FiltersViewController.swift in Sources */,
 				8AC194A11A89BCC200CCC036 /* AppDelegate.swift in Sources */,
 			);

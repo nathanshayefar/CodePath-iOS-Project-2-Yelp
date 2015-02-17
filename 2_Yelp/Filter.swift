@@ -18,8 +18,12 @@ struct Filter {
         ["name" : "Vegan", "code": "vegan"]
     ]
     
-    private static var filters: [String : NSObject] =
-        ["deals" : false]
+    private static var filters: [String : NSObject] = [
+        "categories": "",
+        "deals" : false,
+        "distance" : 0,
+        "sort": 0
+    ]
     
     static func getName(indexPath: NSIndexPath) -> String {
         return self.categories[indexPath.row]["name"]! as String
@@ -61,6 +65,22 @@ struct Filter {
     
     static func setDeals(value: Bool) {
         filters["deals"] = value
+    }
+    
+    static func distanceValue() -> Int {
+        return self.filters["distance"] as Int
+    }
+    
+    static func setDistance(value: Int) {
+        self.filters["distance"] = value
+    }
+    
+    static func sortValue() -> Int {
+        return self.filters["sort"] as Int
+    }
+    
+    static func setSort(value: Int) {
+        self.filters["sort"] = value
     }
     
     static func getFilters() -> [String : NSObject] {

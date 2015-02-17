@@ -40,7 +40,7 @@ enum FilterSection : Int, Printable {
     }
 }
 
-class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate {
+class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate, SegmentCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     weak var delegate: FiltersViewControllerDelegate? = nil
@@ -53,6 +53,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.registerNib(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "SwitchCell")
+        self.tableView.registerNib(UINib(nibName: "SegmentCell", bundle: nil), forCellReuseIdentifier: "SegmentCell")
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "onCancelButton")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .Plain, target: self, action: "onSearchButton")
@@ -89,13 +90,27 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
             
         case FilterSection.Sort.rawValue:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Sort by"
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("SegmentCell") as SegmentCell
+            
+            cell.delegate = self
+            cell.titleLabel.text = "Sort by"
+            cell.type = FilterSection.Sort
+            cell.setSegmentValue(Filter.sortValue())
+            cell.toggleSegment.setTitle("Best Match", forSegmentAtIndex: 0)
+            cell.toggleSegment.setTitle("Distance", forSegmentAtIndex: 1)
+            cell.toggleSegment.setTitle("Rating", forSegmentAtIndex: 2)
             return cell
         
         case FilterSection.Distance.rawValue:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Distance"
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("SegmentCell") as SegmentCell
+            
+            cell.delegate = self
+            cell.titleLabel.text = "Distance"
+            cell.type = FilterSection.Distance
+            cell.setSegmentValue(Filter.distanceValue())
+            cell.toggleSegment.setTitle("1km", forSegmentAtIndex: 0)
+            cell.toggleSegment.setTitle("2km", forSegmentAtIndex: 1)
+            cell.toggleSegment.setTitle("5km", forSegmentAtIndex: 2)
             return cell
         
         case FilterSection.Deals.rawValue:
@@ -114,6 +129,17 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     func didUpdateValue(switchCell: SwitchCell, value: Bool) {
         let indexPath = self.tableView.indexPathForCell(switchCell)!
         Filter.enableCategory(indexPath, enable: value)
+    }
+    
+    func didUpdateSegment(segmentCell: SegmentCell, index: Int) {
+        let indexPath = self.tableView.indexPathForCell(segmentCell)
+        let type = segmentCell.type!
+        
+        if (type == FilterSection.Sort) {
+            Filter.setSort(index)
+        } else if (type == FilterSection.Distance) {
+            Filter.setDistance(index)
+        }
     }
     
     func onCancelButton() {

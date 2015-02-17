@@ -50,6 +50,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary) {
+        println(filters)
         self.makeNetworkRequest()
     }
     
