@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nathan Shayefar. All rights reserved.
 //
 
-class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var client: YelpClient!
@@ -20,10 +20,13 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Navigation Controller
         self.title = "Yelp"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .Plain, target: self, action: "onFilterButton")
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = 85
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.registerNib(UINib(nibName: "BusinessCell", bundle: nil), forCellReuseIdentifier: "BusinessCell")
         
@@ -53,6 +56,19 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
         let cell = self.tableView.dequeueReusableCellWithIdentifier("BusinessCell") as BusinessCell
         cell.setBusiness(self.businesses[indexPath.row])
         return cell
+    }
+    
+    func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary) {
+        // fire a new network event
+        println("LOGGGG")
+    }
+    
+    func onFilterButton() {
+        let filtersViewController = FiltersViewController()
+        filtersViewController.delegate = self
+        let filtersNavigationController = UINavigationController(rootViewController: filtersViewController)
+        
+        self.presentViewController(filtersNavigationController, animated: true, completion: nil)
     }
 }
 
