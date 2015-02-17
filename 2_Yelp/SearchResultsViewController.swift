@@ -11,6 +11,7 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     var client: YelpClient!
     var businesses: [Business] = []
+    var filters: NSDictionary = [:]
     
     let yelpConsumerKey = "qFUBisCevpAq0mCYi_jb-g"
     let yelpConsumerSecret = "cpdvTTFI3Psrzc_hHYctqP7Rmf8"
@@ -51,16 +52,15 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary) {
         println(filters)
+        self.filters = filters
         self.makeNetworkRequest()
     }
     
     private func makeNetworkRequest() {
-        client.searchWithTerm("Thai", success: {
+        client.searchWithFilter(self.filters, success: {
             (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseDictionary = response as NSDictionary
             let responseBusinesses = responseDictionary["businesses"] as [NSDictionary]
-            
-            println(responseBusinesses)
             
             self.businesses = Business.businessesFromDictionaries(responseBusinesses)
             
