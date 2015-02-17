@@ -16,7 +16,7 @@ struct Filter {
         ["name" : "Vegan", "code": "vegan"]
     ]
     
-    private static var filters: [Int : Int] = [:]
+    private static var filters: [String : String] = [:]
     // Swift sets don't exist in Xcode 8.2, so we use a Dictionary instead.
     private static var selectedCategories: [NSDictionary: Bool] = [:]
     
@@ -43,11 +43,11 @@ struct Filter {
         }
     }
     
-    static func getFilters() -> [Int:Int] {
+    static func getFilters() -> [String : String] {
         return self.filters
     }
     
     static func count() -> Int {
-        return categories.count
+        return self.categories.count
     }
 }

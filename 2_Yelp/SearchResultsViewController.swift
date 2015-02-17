@@ -66,7 +66,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func didChangeFilters(filtersViewController: FiltersViewController, filters: NSDictionary) {
-        // fire a new network event
         self.makeNetworkRequest()
     }
     
@@ -89,11 +88,6 @@ class SearchResultsViewController: UIViewController, UITableViewDataSource, UITa
     
     func onFilterButton() {
         performSegueWithIdentifier("filtersViewSegue", sender: self)
-//        let filtersViewController = FiltersViewController()
-//        filtersViewController.delegate = self
-//        let filtersNavigationController = UINavigationController(rootViewController: filtersViewController)
-//        
-//        self.presentViewController(filtersNavigationController, animated: true, completion: nil)
     }
 }
 

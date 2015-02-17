@@ -17,21 +17,64 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     weak var delegate: FiltersViewControllerDelegate? = nil
     
+    enum FilterSection : Int, Printable {
+        case Categories, Sort, Distance, Deals
+        
+        var description : String {
+            get {
+                switch self {
+                case .Categories:
+                    return "Categories"
+                case .Sort:
+                    return "Sort by"
+                case .Distance:
+                    return "Distance"
+                case .Deals:
+                    return "Deals"
+                }
+            }
+        }
+        
+        // A little hacky; I still need to dig deeper into Swift enums
+        static let values = [Categories, Sort, Distance, Deals]
+        static let count = values.count
+        
+        // Not fault tolerant
+        static func fromValue(index: Int) -> FilterSection {
+            return values[index]
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerNib(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "SwitchCell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.registerNib(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "SwitchCell")
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "onCancelButton")
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .Plain, target: self, action: "onSearchButton")
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return FilterSection.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return FilterSection.fromValue(section).description
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Filter.count()
+        switch section {
+        case FilterSection.Categories.rawValue:
+            return Filter.count()
+        case FilterSection.Sort.rawValue, FilterSection.Distance.rawValue, FilterSection.Deals.rawValue:
+                return 1
+        default:
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
